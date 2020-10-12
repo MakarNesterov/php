@@ -1,0 +1,236 @@
+<?php
+    echo "<b>ЗАНЯТИЕ 2</b>";
+    echo "<hr/>";
+
+    echo "<i>Задание 1a </i><br/><br/>";
+
+    $arr = array ("a", "b", "c");
+    var_dump ($arr);
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1b </i><br/><br/>";
+
+    for ($i = 0; $i < count($arr); $i++) {
+        echo "Элемент массива c индексом $i = ".$arr[$i]."<br/>";
+    }
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1c </i><br/><br/>";
+
+    $arr[] = "d";
+    echo '\''.$arr[0]."+".$arr[1].", ".$arr[2]."+".$arr[3].'\'';
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1d </i><br/><br/>";
+
+    $arr = array (2, 5, 3, 9);
+    $result = $arr[0] * $arr[1] + $arr[2] * $arr[3];
+    echo $result;
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1e </i><br/><br/>";
+
+    $arr = array ();
+    $arr[] = 1;
+    $arr[] = 2;
+    $arr[] = 3;
+    $arr[] = 4;
+    $arr[] = 5;
+    var_dump ($arr);
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1f </i><br/><br/>";
+
+    $arr = array ("a" => 1, "b" => 2, "c" => 3);
+    echo $arr["c"];
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1g </i><br/><br/>";
+
+    $result = $arr["a"] + $arr["b"] + $arr["c"];
+    echo $result;
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1h </i><br/><br/>";
+
+    $arr = array ("Коля" => "1000$", "Вася" => "2000$", "Петя" => "3000$");
+    echo "Зарплата Коли ".$arr["Коля"].", А Пети ".$arr["Петя"].".";
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1i-j </i><br/><br/>";
+
+    $arr = array ( 1 => "понедельник", 2 => "вторник", 3 => "среда",  4 => "четверг", 5 => "пятница", 6 => "суббота", 7 => "воскресенье" );
+    $day_of_week = date('N');
+
+    foreach ($arr as $key => $value) {
+        $day = $key;
+        if ($key == $day_of_week)
+            echo "Сегодня $value ($day)";
+    }
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1k </i><br/><br/>";
+
+    $wordpress = 'wordpress';
+    $blue = 'blue';
+
+    $arr = array( array('joomla', 'wordpress', 'drupal'),
+                  array('blue' => 'голубой', 'red' => 'красный', 'green' => 'зеленый')
+                );
+
+    for ($row = 0; $row < count($arr); $row++) {
+
+        for ($col = 0; $col < 3; $col++) {
+            if ($row == 1) break;
+            else if ($arr[$row][$col] != $wordpress)
+                echo $arr[$row][$col]."<br/>";
+        }
+
+        foreach($arr[$row] as $key => $value) {
+            if ($row == 0) continue;
+            else if ($key != $blue)
+                echo $value."<br/>";
+        }
+    }
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1l </i><br/><br/>";
+
+    $arr = [
+            "ru" => [ 1 => "понедельник", 2 => "вторник", 3 => "среда", 4 => "четверг", 5 => "пятница", 6 => "суббота", 7 => "воскресенье"],
+            "en" => [ 1 => "monday", 2 => "tuesday", 3 => "wednesday", 4 => "thursday", 5 => "friday", 6 => "saturday", 7 => "sunday"]
+    ];
+
+            foreach ($arr as $key => $value) {                
+                foreach ($arr["ru"] as $key => $value) {
+                    if ($key > 1) break;
+                    else if ($key == 1)
+                        echo $value."<br/>";
+                }      
+                foreach ($arr["en"] as $key => $value) {                                           
+                    if ($key == 3)
+                        echo $value."<br/>";
+                }      
+                if ($arr["ru"][1] == "понедельник") break;                     
+            }
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1m </i><br/><br/>";        
+    
+    $lang = "ru";
+    $day = 3;
+
+    foreach ($arr[$lang] as $key => $value) {
+        if ($key == $day) 
+            echo $value."<br/>";
+    }      
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 1n </i><br/><br/>";
+
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 2a </i><br/><br/>";
+
+    function printWords () {    // называем функцию - printWords. () - в скобках параметр, который принимает данная функция
+        echo "Hello!";          // функция выведет "хеллоу" когда мы будем на нее ссылаться
+    }
+    printWords ();              // вызываем функцию printWords.
+
+
+    echo "<br/>";
+
+
+    $x = 20;
+    function printInt ($int) {    // принимаемое значение параметра функции мы можем записать под другим именем. здесь $int.
+        echo $int;                // функция выведет число которое она приняла в качестве параметра
+    }
+    printInt ($x);                // вызываем функцию. значение 20 переменной х будет параметром функции и выведется на экран
+
+
+    echo "<br/>";
+
+
+    function math ($first, $second) {   // функция, принимающая 2 параметра
+        $sum = $first + $second;        // в переменную sum запишем сумму значений принимаемых параметров
+        return $sum;                    // вернем сумму
+    }
+
+    $y = 35;                      // параметр
+    $summa = math ($x, $y);       // в переменной summa лежит, то, что вернула функция math
+
+    function printInt2 ($int) {   // через эту функцию выведем, то, что вернула функция math
+        echo $int;
+    }
+    printInt2 ($summa);           // параметром функции printInt2 будет, то что вернула функция math. значение этого параметр и выведем на экран
+
+
+    echo "<br/>";
+
+
+    function printInt3 ($w, $o, $p) {      // в этой функции лежит вызов другой функции. o, p примут значения x, y
+        $w = math ($o, $p);             // word будет равна тому что вернет math
+        echo $w;                        // выведем значение word на экран
+    }
+    printInt3 ($word, $x, $y);             // вызовем
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 2b </i><br/><br/>";
+
+    
+
+    $arr = array(
+        array( 500, 200, 300, 400),
+        array( 400, -100, 650, 50),
+        array( 200, -200, 450, -350)
+    );
+    $arr = [1, 3, 5, 7];
+    rsort($arr);
+    for ($ro; $ro < count($arr); $ro++) {
+        echo $ro;
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+    echo "<hr/>";
+    echo "<i>Задание 2c </i><br/><br/>";
+
+
+
+?>
