@@ -44,25 +44,21 @@
 
 
     echo "Занятие 1-4b <br/><br/>";
-    $why = true;
-    $a = 4;
-    $b = 3;
-    $c = 2;
-    $d = 2;
-    $h1 = 2;
-    $x = (($a - $b) * ($a - $b) + $с * $с - $d * $d) / (2 * ($a - $b));
+    $why = false;
+    $a = 20;
+    $b = 8;
+    $c = 10;
+    $d = 10;
+    $h1 = 8;
 
-    echo $x.'<br/>';
-    echo $x * $x;
-    $h2 = sqrt($с * $с - $x * $x);
-    echo $h2;
+    $x = (pow(($a - $b), 2) + pow($c, 2) - pow($d, 2)) / (2 * ($a - $b));
+    $h2 = sqrt(pow($c, 2) - pow($x, 2));
 
-
-    if ($why == true && a > b)  {
-        $S = (($a + $b) / 2) * $h;
+    if ($why == true && $a > $b && $h1 == $h2)  {
+        $S = (($a + $b) / 2) * $h1;
         echo "Площадь трапеции равна $S";
     }
-    else if (a > b) {
+    else if ($a > $b && $h1 == $h2) {
         $P = $a + $b + $c + $d;
         echo "Периметр трапеции равен $P";
     }
@@ -191,4 +187,23 @@
     else {
       echo "Большое число";
     }
+
+    echo "<hr/>";
+
+    echo "Занятие 1-6b <br/><br/>";
+
+    $price = 10050;
+    $price2 = $price + ($price / 100 * 13) - (($price * 13) % 100 / 100);
+    $N = $price2 % 100;
+    $M = ($price2 - $N) / 100;
+
+    echo $M." рубл[ей/я] ".$N." копе[ек/йки]<br/>";
+    echo $M.".".$N;
+
+
+    echo "<hr/>";
+
+    echo "Занятие 1-6c <br/><br/>";
+
+    
 ?>
