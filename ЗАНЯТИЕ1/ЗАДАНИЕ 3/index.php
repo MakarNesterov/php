@@ -121,11 +121,11 @@
     $pass1 = "436";
     $pass2Se = "123";  // шифр
 
-    $hack = ($pass1 - 406) / 10;  // найдем 2 разряд пароля pass1
+    $hack = ($pass1 % 100 - $pass1 % 10) / 10;  // найдем 2 разряд пароля pass1
 
-    $pass2Se1 = ($pass2Se - 23) / 100;  // найдем 1 разряд шифра
-    $pass2Se2 = ($pass2Se - 103) / 10;  // найдем 2 разряд шифра
-    $pass2Se3 = $pass2Se - 120;         // найдем 3 разряд шифра
+    $pass2Se3 = $pass2Se % 10; // найдем 3 разряд шифра
+    $pass2Se2 = ($pass2Se % 100 - $pass2Se % 10) / 10;  // найдем 2 разряд шифра
+    $pass2Se1 = ($pass2Se - ($pass2Se % 100 )) / 100;  // найдем 1 разряд шифра
 
     if ($hack > 5) {   // если 2 разряд pass1 больше 5
       echo "Пароль pass2 - ".$pass2Se1.$pass2Se2.$pass2Se3; // то pass2 будет: 1 разряд шифра + 2 разряд шифра + 3 разряд шифра
@@ -134,13 +134,32 @@
       echo "Пароль pass2 - ".$pass2Se2.$pass2Se3.$pass2Se1; // то pass2 будет: 2 разряд шифра + 3 разряд шифра + 1 разряд шифра
     }
 
+
+
+
     echo "<hr/>";
 
     echo "Занятие 1-5d <br/><br/>";
 
-    if ($pass1 == "436") {   // если 2 разряд pass1 больше 5
-      echo "Шифр - ".$pass2Se1.$pass2Se2.$pass2Se3;
+    $pass1 = "436";
+    $pass2 = "231";
+
+    $hack = ($pass1 % 100 - $pass1 % 10) / 10;  // найдем 2 разряд пароля pass1
+
+    $pass2_3 = $pass2 % 10; // найдем 3 разряд пароля pass2
+    $pass2_2 = ($pass2 % 100 - $pass2 % 10) / 10;  // найдем 2 разряд пароля pass2
+    $pass2_1 = ($pass2 - ($pass2 % 100 )) / 100;  // найдем 1 разряд пароля pass2
+
+    if ($hack > 5) {   // если 2 разряд pass1 больше 5
+      echo "Шифр pass2Se - ".$pass2_1.$pass2_2.$pass2_3; // то шифр будет: 1 разряд pass2 + 2 разряд pass2 + 3 разряд pass2
     }
+    else {   // если 2 разряд pass1 меньше или равно 5
+      echo "Шифр pass2Se - ".$pass2_3.$pass2_1.$pass2_2; // то шифр будет: 2 разряд pass2 + 3 разряд pass2 + 1 разряд pass2
+    }
+
+
+
+
 
     echo "<hr/>";
 
@@ -150,7 +169,35 @@
     $b = "четыре";
     $c = 0;
 
-    if ($a == "ноль" or $b == "ноль") {
+    switch ($a) {
+      case 'ноль': $c += 0; break;
+      case 'один': $c += 1; break;
+      case 'два': $c += 2; break;
+      case 'три': $c += 3; break;
+      case 'четыре': $c += 4; break;
+      case 'пять': $c += 5; break;
+      case 'шесть': $c += 6; break;
+      case 'семь': $c += 7; break;
+      case 'восемь': $c += 8; break;
+      case 'девять': $c += 9; break;
+      default: echo 'Некорректные данные'; break;
+    }
+
+    switch ($b) {
+      case 'ноль': $c += 0; break;
+      case 'один': $c += 1; break;
+      case 'два': $c += 2; break;
+      case 'три': $c += 3; break;
+      case 'четыре': $c += 4; break;
+      case 'пять': $c += 5; break;
+      case 'шесть': $c += 6; break;
+      case 'семь': $c += 7; break;
+      case 'восемь': $c += 8; break;
+      case 'девять': $c += 9; break;
+      default: echo 'Некорректные данные'; break;
+    }
+
+    /*if ($a == "ноль" or $b == "ноль") {
       $c += 0;
     }
     if ($a == "один" or $b == "один") {
@@ -179,9 +226,9 @@
     }
     if ($a == "девять" or $b == "девять") {
       $c += 9;
-    }
+    }*/
     echo $c."<br/>";
-    if (strlen($c) == 1) {
+    if ($c < 10) {
       echo "Маленькое число";
     }
     else {

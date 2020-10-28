@@ -121,31 +121,31 @@
             "en" => [ 1 => "monday", 2 => "tuesday", 3 => "wednesday", 4 => "thursday", 5 => "friday", 6 => "saturday", 7 => "sunday"]
     ];
 
-            foreach ($arr as $key => $value) {                
+            foreach ($arr as $key => $value) {
                 foreach ($arr["ru"] as $key => $value) {
                     if ($key > 1) break;
                     else if ($key == 1)
                         echo $value."<br/>";
-                }      
-                foreach ($arr["en"] as $key => $value) {                                           
+                }
+                foreach ($arr["en"] as $key => $value) {
                     if ($key == 3)
                         echo $value."<br/>";
-                }      
-                if ($arr["ru"][1] == "понедельник") break;                     
+                }
+                if ($arr["ru"][1] == "понедельник") break;
             }
 
 
 
     echo "<hr/>";
-    echo "<i>Задание 1m </i><br/><br/>";        
-    
+    echo "<i>Задание 1m </i><br/><br/>";
+
     $lang = "ru";
     $day = 3;
 
     foreach ($arr[$lang] as $key => $value) {
-        if ($key == $day) 
+        if ($key == $day)
             echo $value."<br/>";
-    }      
+    }
 
 
 
@@ -205,32 +205,67 @@
     echo "<hr/>";
     echo "<i>Задание 2b </i><br/><br/>";
 
-    
+    $arr = [
+      'Вова' => [500, 200, 300, 400, 3000],
+      'Петя' =>  [400, -100, 650, 50, 900, -300],
+      'Вася' =>  [200, -200, 450, -350, 300],
+      'Саша' =>  [100, 200, 450, 350, -300, 3000]
+    ];
 
-    $arr = array(
-        array( 500, 200, 300, 400),
-        array( 400, -100, 650, 50),
-        array( 200, -200, 450, -350)
-    );
-    $arr = [1, 3, 5, 7];
-    rsort($arr);
-    for ($ro; $ro < count($arr); $ro++) {
-        echo $ro;
+    $sums = [];
+
+    foreach ($arr as $key => $value) {
+        $sum = 0;
+        for ($c = 0; $c < count($value); $c++) {
+          $sum = $sum + $value[$c];
+        }
+        $sums[] = $sum;
     }
-    
-    
 
-
-
-
-
-
+    rsort($sums);
+    echo $sums[0].'<br/>';
+    echo $sums[1].'<br/>';
+    echo $sums[2].'<br/>';
+    echo $sums[3].'<br/>';
 
 
 
     echo "<hr/>";
     echo "<i>Задание 2c </i><br/><br/>";
 
+    $range = [1, 50];
 
+    function numbers($range) {
+        for ($i = $range[0]; $i <= $range[1]; $i++) {
+            if ($i == 1) continue;
+            $prime = 0;
+            for ($j = 1; $j <= $i; $j++) {
+                $r = $i % $j;
+                if ($r == 0) {
+                    $prime++;
+                }
+            }
+            if ($prime == 2)  {
+                $prime_numbers[] = $i;
+            }
+            else {
+                $composite_numbers[] = $i;
+            }
+        }
+
+        echo 'Простые числа: ';
+        foreach ($prime_numbers as $value) {
+            echo $value.' ';
+        }
+
+        echo '<br/>Составные числа: ';
+        foreach ($composite_numbers as $value) {
+            echo $value.' ';
+        }
+
+
+    }
+
+    numbers($range);
 
 ?>
